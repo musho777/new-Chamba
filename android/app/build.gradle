@@ -79,22 +79,15 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-<<<<<<< HEAD
     namespace "com.photohost"
-=======
-    namespace "com.chamba"
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
     defaultConfig {
         applicationId "com.chamba"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-<<<<<<< HEAD
         versionCode 57
         versionName "57.0"
-=======
         versionCode 1
         versionName "1.0"
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
     }
     signingConfigs {
         release {

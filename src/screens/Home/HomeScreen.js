@@ -290,11 +290,7 @@ export const HomeScreen = () => {
       },
     [blackList, getLents.data.length, viewableItems, fullScreen],
   );
-<<<<<<< HEAD
-  const keyExtractor = React.useCallback(item => item?.id?.toString(), []);
-=======
   const keyExtractor = React.useCallback((item) => item?.id?.toString(), []);
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
 
   const refreshControl = (
     <RefreshControl

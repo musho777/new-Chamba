@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package com.photohost
-=======
-package com.chamba
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

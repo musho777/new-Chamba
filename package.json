@@ -40,11 +40,8 @@
     "lottie-react-native": "^7.0.0",
     "native-base": "^3.4.28",
     "npm": "^10.8.2",
-<<<<<<< HEAD
-=======
     "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
     "react": "18.3.1",
     "react-native": "0.75.5",
     "react-native-accordion": "^1.0.1",
