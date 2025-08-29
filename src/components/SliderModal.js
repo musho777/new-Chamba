@@ -10,7 +10,6 @@ export const SliderModal = ({
   close,
   avatar,
 }) => {
-  console.log(activePhoto);
   return (
     <Modal
       animationType="fade"

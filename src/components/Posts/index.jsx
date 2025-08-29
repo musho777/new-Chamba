@@ -220,7 +220,6 @@ export const Posts = ({
     }).start();
   };
   const GetColor = (color, active) => {
-    console.log(color);
     if (!color) {
       return 'white';
     } else if (color[0] == '[') {

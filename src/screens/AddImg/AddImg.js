@@ -309,10 +309,11 @@ export const AddImg = ({navigation}) => {
 
     try {
       ImagePicker.openPicker({
-        cropping: false,
         compressImageQuality: 1,
         multiple: true,
         mediaType: 'photo',
+        maxFiles: 4,
+        showsSelectedCount: true,
         videoQuality: 'low',
         durationLimit: 60,
         storageOptions: {
@@ -321,6 +322,7 @@ export const AddImg = ({navigation}) => {
         },
       })
         .then(response => {
+          console.log('22');
           let item = [...data];
           if (response.didCancel) {
             if (uri.length == 0) {
@@ -339,7 +341,6 @@ export const AddImg = ({navigation}) => {
             const maxPhotos = postOrientation === 'vertical' ? 4 : 3;
             response?.map((elm, i) => {
               if (item.length < maxPhotos) {
-                console.log(elm);
                 item.push({uri: elm.path, mime: elm?.mime});
               }
             });

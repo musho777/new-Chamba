@@ -77,7 +77,6 @@ export const Header = ({
     let form = new FormData();
     uri.length &&
       uri.forEach((el, i) => {
-        console.log(el)
         form.append('photos[]', {
           uri: el.uri,
           type: el.mime,
@@ -278,7 +277,8 @@ export const Header = ({
           onPress={() => {
             Close();
             navigation.goBack();
-          }}></TouchableOpacity>
+          }}
+        />
 
         <TouchableOpacity
           activeOpacity={1}
