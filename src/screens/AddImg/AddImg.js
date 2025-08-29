@@ -29,13 +29,11 @@ import {
 import {Status} from './component/status';
 import {AppColors} from '../../styles/AppColors';
 import {CommonActions, useFocusEffect} from '@react-navigation/native';
-// import { openPicker } from '@baronha/react-native-multiple-image-picker';
-import ImagePicker from 'react-native-image-crop-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 import FastImage from 'react-native-fast-image';
 import {Header} from './component/header';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import RenderHtml from 'react-native-render-html';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -308,46 +306,43 @@ export const AddImg = ({navigation}) => {
     setFirst(true);
 
     try {
-      ImagePicker.openPicker({
-        compressImageQuality: 1,
-        multiple: true,
+      const options = {
         mediaType: 'photo',
-        maxFiles: 4,
-        showsSelectedCount: true,
-        videoQuality: 'low',
-        durationLimit: 60,
-        storageOptions: {
-          skipBackup: true,
-          path: 'images',
-        },
-      })
-        .then(response => {
-          console.log('22');
-          let item = [...data];
-          if (response.didCancel) {
-            if (uri.length == 0) {
-              navigation.dispatch(
-                CommonActions.reset({
-                  index: 0,
-                  routes: [{name: 'TabNavigation'}],
-                }),
-              );
-              setFirst(false);
-            }
-          } else {
-            if (response.length) {
-              setFirst(true);
-            }
-            const maxPhotos = postOrientation === 'vertical' ? 4 : 3;
-            response?.map((elm, i) => {
-              if (item.length < maxPhotos) {
-                item.push({uri: elm.path, mime: elm?.mime});
-              }
-            });
-            setUri(item);
+        quality: 1,
+        selectionLimit: 4,
+        includeBase64: false,
+      };
+
+      launchImageLibrary(options, response => {
+        console.log('22');
+        let item = [...data];
+        if (response.didCancel) {
+          if (uri.length == 0) {
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: 'TabNavigation'}],
+              }),
+            );
+            setFirst(false);
           }
-        })
-        .catch(error => {});
+        } else if (response.errorMessage) {
+          console.log('ImagePicker Error: ', response.errorMessage);
+          Close();
+          setFirst(false);
+        } else if (response.assets) {
+          if (response.assets.length) {
+            setFirst(true);
+          }
+          const maxPhotos = postOrientation === 'vertical' ? 4 : 3;
+          response.assets.forEach(asset => {
+            if (item.length < maxPhotos) {
+              item.push({uri: asset.uri, mime: asset.type});
+            }
+          });
+          setUri(item);
+        }
+      });
     } catch (error) {
       Close();
       setFirst(false);
