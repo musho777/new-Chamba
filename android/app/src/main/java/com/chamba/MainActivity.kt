@@ -1,4 +1,4 @@
-package com.photohost
+package com.chamba
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

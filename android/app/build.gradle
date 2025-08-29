@@ -27,7 +27,7 @@ react {
 
     /* Bundling */
     //   A list containing the node command and its flags. Default is just 'node'.
-    nodeExecutableAndArgs = ["/Users/musho99icloud.com/.nvm/versions/node/v23.10.0/bin/node"]
+    // nodeExecutableAndArgs = ["node"]
     //
     //   The command to run when bundling. By default is 'bundle'
     // bundleCommand = "ram-bundle"
@@ -79,25 +79,16 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.photohost"
+    namespace "com.chamba"
     defaultConfig {
         applicationId "com.chamba"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 57
-        versionName "57.0"
         versionCode 1
         versionName "1.0"
     }
     signingConfigs {
-        release {
-            storeFile file('photoHost.keystore')
-            storePassword '11111111'
-            keyAlias 'photoHost'
-            keyPassword '11111111'
-        }
         debug {
-            
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
@@ -106,9 +97,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.debug
         }
         release {
             // Caution! In production, you need to generate your own keystore file.

@@ -1,4 +1,4 @@
-package com.photohost
+package com.chamba
 
 import android.app.Application
 import com.facebook.react.PackageList
