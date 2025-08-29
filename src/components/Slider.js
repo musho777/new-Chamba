@@ -13,14 +13,10 @@ import {SliderModal} from './SliderModal';
 import {LikePostAction} from '../store/action/action';
 import {useDispatch, useSelector} from 'react-redux';
 import SliderImage from './sliderImage';
-// import { VidioComponent } from './post/Vidio/VidioComponent';
-// import { Styles } from '../styles/Styles';
-// import Sliders from '@react-native-community/slider';
 import LottieView from 'lottie-react-native';
 
 const dpi = PixelRatio.get() * 160;
 const windowWidth = Dimensions.get('window').width;
-// const windowHeight = Dimensions.get('window').height;
 
 export const Slider = React.memo(
   ({

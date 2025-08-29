@@ -48,15 +48,13 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
           if (!imageHeights[index]) {
             calculateImageHeight(imageUrl, index);
           }
-
           const imageHeight = imageHeights[index] || 400;
 
           return (
             <View style={styles.imageWrapper}>
               <Image
                 source={{uri: imageUrl}}
-                style={[styles.image, {height: imageHeight}]}
-                // resizeMode="contain"
+                style={[styles.image, {height: imageHeight > 400 ? 525 : 400}]}
               />
               <TouchableOpacity
                 onPress={() => close()}
