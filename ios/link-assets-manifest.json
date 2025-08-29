@@ -1,0 +1,321 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/AdventPro_Expanded-Regular.ttf",
+      "sha1": "b30218b20b3a3f3c48e5b04e8e83b3c228ffe9e1"
+    },
+    {
+      "path": "src/assets/fonts/Agdasima-Regular.ttf",
+      "sha1": "4e047702c298778c8c423f999d0264836b1ade4e"
+    },
+    {
+      "path": "src/assets/fonts/AlegreyaSansSC-Regular.ttf",
+      "sha1": "cf4fb58eddaa47a14d091bb65239d7b7d05d20be"
+    },
+    {
+      "path": "src/assets/fonts/Alice-Regular.ttf",
+      "sha1": "7abf3b73f620de8e1242966e7079016bcecb4fe3"
+    },
+    {
+      "path": "src/assets/fonts/AlumniSansCollegiateOne-Regular.ttf",
+      "sha1": "9d8dd7010d44a9067abe4e2d36c81d23845460a7"
+    },
+    {
+      "path": "src/assets/fonts/AmaticSC-Regular.ttf",
+      "sha1": "9aa9f1b9ddbd8340e415b538c513ee2ab92ee2e2"
+    },
+    {
+      "path": "src/assets/fonts/BadScript-Regular.ttf",
+      "sha1": "1acf93ddc780afc4f4621999613daaa513c16844"
+    },
+    {
+      "path": "src/assets/fonts/BalsamiqSans-Regular.ttf",
+      "sha1": "050e0d3fa328586e4601390b60cd7780b85da7e0"
+    },
+    {
+      "path": "src/assets/fonts/Caveat-Regular.ttf",
+      "sha1": "c3c969c44a97760dd2dfd01c452976c725307b42"
+    },
+    {
+      "path": "src/assets/fonts/Comfortaa-Regular.ttf",
+      "sha1": "fb5a258452921a7f710d1913777ae6f48a0b6089"
+    },
+    {
+      "path": "src/assets/fonts/CormorantGaramond-Regular.ttf",
+      "sha1": "e6f212e20e9b26cfd5efb7b36880c3ad4362094b"
+    },
+    {
+      "path": "src/assets/fonts/CormorantInfant-Regular.ttf",
+      "sha1": "87f188c863ff96944b072a0a5a6a9d55d95d3376"
+    },
+    {
+      "path": "src/assets/fonts/DaysOne-Regular.ttf",
+      "sha1": "51ad4f895d88177662da5a5c41d3a99bc897aa90"
+    },
+    {
+      "path": "src/assets/fonts/DelaGothicOne-Regular.ttf",
+      "sha1": "aa4fe2ff09693803f5665c6596480f2f911f8540"
+    },
+    {
+      "path": "src/assets/fonts/Geologica_Auto-Regular.ttf",
+      "sha1": "10ff53f4fc18556c0f9b02ca54110d9f8d70180a"
+    },
+    {
+      "path": "src/assets/fonts/GreatVibes-Regular.ttf",
+      "sha1": "9b472a4e6d606f46bcaa915d4b8ce59e10e2624a"
+    },
+    {
+      "path": "src/assets/fonts/HachiMaruPop-Regular.ttf",
+      "sha1": "30be258ce4f2f06d3b650261d1327f6ea3764965"
+    },
+    {
+      "path": "src/assets/fonts/JetBrainsMono-Regular.ttf",
+      "sha1": "898ddb2e35ec8bc699c86d0a5e26da10a32a2600"
+    },
+    {
+      "path": "src/assets/fonts/Jost-Regular.ttf",
+      "sha1": "63de8f35a2b969d64b1e4012d26a38e8be1e01ae"
+    },
+    {
+      "path": "src/assets/fonts/Lobster-Regular.ttf",
+      "sha1": "120c751cd7a77174037c2409ab883ef7efc5edbb"
+    },
+    {
+      "path": "src/assets/fonts/MarckScript-Regular.ttf",
+      "sha1": "254431c73407e4cd8f02055223ed812d20a99414"
+    },
+    {
+      "path": "src/assets/fonts/Monomakh-Regular.ttf",
+      "sha1": "a8e99f3d89c539be61b1e172ddb541d2456edfdb"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Black.ttf",
+      "sha1": "fca130f21601346cce37bb8a9526ff01af66d912"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-BlackItalic.ttf",
+      "sha1": "50ca0660179c28c31ef1debc55506a1eab366446"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Bold.ttf",
+      "sha1": "04052dc3b846609216de1e0cbcec337c6b6e74f6"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-BoldItalic.ttf",
+      "sha1": "ed5e533b6571e33adb6d01298cb8d1a5a2466657"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ExtraBold.ttf",
+      "sha1": "1914bc1981e6ceceadb2f6d72455b4e89e04965c"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ExtraBoldItalic.ttf",
+      "sha1": "49758a0ea59fe7f82c639a385a2bacf3d4de3398"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ExtraLight.ttf",
+      "sha1": "7c594b126941460bd2f3b47097fd6222f52277e7"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ExtraLightItalic.ttf",
+      "sha1": "fbbb972b616c3b84d99976ddf84b6fecdeb4c7ca"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Italic.ttf",
+      "sha1": "4ee8f07c7414009645d03d87cd72df15658fe9f4"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Light.ttf",
+      "sha1": "6f21894a80049259ef71fcba135218695b41b67a"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-LightItalic.ttf",
+      "sha1": "8e980f76a35675acd586f829dd2ae8d002dd97d6"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Medium.ttf",
+      "sha1": "6b57d12e018c64352e202f8ef3bf7f431f76d935"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-MediumItalic.ttf",
+      "sha1": "8b2c464e42f07fc307fddb9c58d202ecff19be2a"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Regular.ttf",
+      "sha1": "de57aa03e4821fdbe6c34ec2c895e8b5c914e837"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-SemiBold.ttf",
+      "sha1": "8580dec824bbdb6ce24d04d3aaf360776339f0a7"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-SemiBoldItalic.ttf",
+      "sha1": "51626902f9f2b0aa24b235bb68b2640622f156b9"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-Thin.ttf",
+      "sha1": "8c871991960f520a31635f95be6c346b659e2c8c"
+    },
+    {
+      "path": "src/assets/fonts/Montserrat-ThinItalic.ttf",
+      "sha1": "f7d887fc6b50157081fd60082d20339c433f9955"
+    },
+    {
+      "path": "src/assets/fonts/MontserratUnderline-Regular.ttf",
+      "sha1": "47093fe841c6554ecd80eeb6896f1112fb684a0f"
+    },
+    {
+      "path": "src/assets/fonts/Neucha-Regular.ttf",
+      "sha1": "fb4e9123d5d0adcd6fb3036372d1b603548a7b43"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansDisplay_Condensed-Regular.ttf",
+      "sha1": "cfc5664a35f7f99f16e4b84da3cf837687baa62c"
+    },
+    {
+      "path": "src/assets/fonts/NotoSansHK-Regular.ttf",
+      "sha1": "2eeda13e0b296393516279265b880d826367abcb"
+    },
+    {
+      "path": "src/assets/fonts/Oi-Regular.ttf",
+      "sha1": "e1491f289af1dd858abe0283eef3f118cb932cac"
+    },
+    {
+      "path": "src/assets/fonts/Pacifico-Regular.ttf",
+      "sha1": "baca1fca7fe74b61cb33aa0da48ec1a3a77bcf49"
+    },
+    {
+      "path": "src/assets/fonts/Pangolin-Regular.ttf",
+      "sha1": "b6797b46dbb518370e4d91bdc6df5cddf48825ba"
+    },
+    {
+      "path": "src/assets/fonts/Pattaya-Regular.ttf",
+      "sha1": "fb7be079953f63b6fc5a324c60e3cda71e9f9f5b"
+    },
+    {
+      "path": "src/assets/fonts/PlayfairDisplaySC-Regular.ttf",
+      "sha1": "ebc9f6727f30d5084a7f53e1b5f082ebac8a8c9f"
+    },
+    {
+      "path": "src/assets/fonts/PlaywriteGBS-Regular.ttf",
+      "sha1": "b657820f7717f1ca15cc99438a3db8064ca67c22"
+    },
+    {
+      "path": "src/assets/fonts/PressStart2P-Regular.ttf",
+      "sha1": "59caa00e6aac4573f51943e0bdd20c758eddbf4a"
+    },
+    {
+      "path": "src/assets/fonts/ProstoOne-Regular.ttf",
+      "sha1": "b18ae80cb7d295f5b5a674abd45e4538d8d6deaf"
+    },
+    {
+      "path": "src/assets/fonts/RubikBeastly-Regular copy.ttf",
+      "sha1": "c7305eac93077049579c2ec252160590211c8a8e"
+    },
+    {
+      "path": "src/assets/fonts/RubikBeastly-Regular.ttf",
+      "sha1": "c7305eac93077049579c2ec252160590211c8a8e"
+    },
+    {
+      "path": "src/assets/fonts/RubikBrokenFax-Regular copy.ttf",
+      "sha1": "bf520c5e735893c7969054b02ee8b6010ecfe4ef"
+    },
+    {
+      "path": "src/assets/fonts/RubikBrokenFax-Regular.ttf",
+      "sha1": "bf520c5e735893c7969054b02ee8b6010ecfe4ef"
+    },
+    {
+      "path": "src/assets/fonts/RubikBubbles-Regular.ttf",
+      "sha1": "3ed44df9642eb519e942aa9dfb808451c4a39d5b"
+    },
+    {
+      "path": "src/assets/fonts/RubikBurned-Regular.ttf",
+      "sha1": "546eccbc5a368bd10e6a4fe9570208428c16a036"
+    },
+    {
+      "path": "src/assets/fonts/RubikDistressed-Regular.ttf",
+      "sha1": "391c6a0e7f3d4d54fb2f07dfa8b9c1cf91dd588d"
+    },
+    {
+      "path": "src/assets/fonts/RubikDoodleTriangles-Regular copy.ttf",
+      "sha1": "2fc1befc41353c68568e035f8e8f0e1ac9b2ff8f"
+    },
+    {
+      "path": "src/assets/fonts/RubikDoodleTriangles-Regular.ttf",
+      "sha1": "2fc1befc41353c68568e035f8e8f0e1ac9b2ff8f"
+    },
+    {
+      "path": "src/assets/fonts/RubikGemstones-Regular.ttf",
+      "sha1": "8bbe130d968061a5349eb93f91e0315c1833ab7f"
+    },
+    {
+      "path": "src/assets/fonts/RubikLines-Regular copy.ttf",
+      "sha1": "bfe913cf5356f56d866e2b5ffa1bfacd7ab3bb74"
+    },
+    {
+      "path": "src/assets/fonts/RubikLines-Regular.ttf",
+      "sha1": "bfe913cf5356f56d866e2b5ffa1bfacd7ab3bb74"
+    },
+    {
+      "path": "src/assets/fonts/RubikMaps-Regular.ttf",
+      "sha1": "c78a6492f8a56dd6d8f725544be079534f557022"
+    },
+    {
+      "path": "src/assets/fonts/RubikMaze-Regular.ttf",
+      "sha1": "440b61c1ff22336f626ed0e44a91ad56b750caf9"
+    },
+    {
+      "path": "src/assets/fonts/RubikMicrobe-Regular.ttf",
+      "sha1": "e6e6fc606709bf3d240fe4f45a5182bf07f1b1a0"
+    },
+    {
+      "path": "src/assets/fonts/RubikMonoOne-Regular.ttf",
+      "sha1": "494e30805dc070dfa19c14f69db2dc887ed12556"
+    },
+    {
+      "path": "src/assets/fonts/RubikPixels-Regular.ttf",
+      "sha1": "8bce4648749376db21e5e5f20ea5c3b46b72ac6d"
+    },
+    {
+      "path": "src/assets/fonts/RubikPuddles-Regular.ttf",
+      "sha1": "75d8cd92e80c3b344908b7d376e19d5fe9aa9023"
+    },
+    {
+      "path": "src/assets/fonts/RubikSprayPaint-Regular.ttf",
+      "sha1": "e29a554ac9cdde6dddd8e6605edeb819125231ae"
+    },
+    {
+      "path": "src/assets/fonts/RussoOne-Regular.ttf",
+      "sha1": "4a12533ad9ee3d6c83da4ac659d78ef9fb702ab4"
+    },
+    {
+      "path": "src/assets/fonts/ShantellSans-Regular.ttf",
+      "sha1": "30a1ac8780fa24e236f8c152b5b7d583224ad7bc"
+    },
+    {
+      "path": "src/assets/fonts/SofiaSansExtraCondensed-Regular.ttf",
+      "sha1": "068013fca1708c6f950b205cfd9f2ce66eb8e737"
+    },
+    {
+      "path": "src/assets/fonts/Spectral-Regular.ttf",
+      "sha1": "81265cf27ab9295bd2f62d34d3fa007b0dfccc99"
+    },
+    {
+      "path": "src/assets/fonts/Tinos-Regular.ttf",
+      "sha1": "7986131e326593c805a13f9b0087fa52ae5f9c39"
+    },
+    {
+      "path": "src/assets/fonts/Tiny5-Regular.ttf",
+      "sha1": "efb6866fde05939eb2d94809edf8b5433fd58bdc"
+    },
+    {
+      "path": "src/assets/fonts/Unbounded-Regular.ttf",
+      "sha1": "6149891af7e7dbd207323315fcd25a08bd364a8c"
+    },
+    {
+      "path": "src/assets/fonts/YanoneKaffeesatz-Regular.ttf",
+      "sha1": "8e52d8409fb1b576362596d9df5b012b11ad145e"
+    }
+  ]
+}
