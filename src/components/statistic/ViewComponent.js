@@ -1,45 +1,52 @@
-import React, { useCallback, useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, {useCallback, useEffect} from 'react';
+import {View, TouchableOpacity} from 'react-native';
+import {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {Styles} from '../../styles/Styles';
+import {ArrowSvg1, StatisticSvg, ViewListSwg} from '../../assets/svg/Svgs';
+import {ViewList} from './ViewList';
+import {StatisticList} from './StatisticList';
 import {
-  BottomSheetBackdrop,
-} from '@gorhom/bottom-sheet';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { Styles } from '../../styles/Styles';
-import { ArrowSvg1, StatisticSvg, ViewListSwg } from '../../assets/svg/Svgs';
-import { ViewList } from './ViewList';
-import { StatisticList } from './StatisticList';
-import { GetPostViewAction, GetVidioStatistic, HidenTabNavigation, ShowTabNavigation } from '../../store/action/action';
+  GetPostViewAction,
+  GetVidioStatistic,
+  HidenTabNavigation,
+  ShowTabNavigation,
+} from '../../store/action/action';
 import BottomSheet from '@gorhom/bottom-sheet';
 
-export const ViewComponent = ({ id, token, close, big = false, selectedVidioId }) => {
-  const dispatch = useDispatch()
-  const [vidio, setVidio] = useState(false)
+export const ViewComponent = ({
+  id,
+  token,
+  close,
+  big = false,
+  selectedVidioId,
+}) => {
+  const dispatch = useDispatch();
+  const [vidio, setVidio] = useState(false);
   useEffect(() => {
     if (id) {
-      dispatch(GetPostViewAction({ post_id: id }, token, 1));
+      dispatch(GetPostViewAction({post_id: id}, token, 1));
     }
-  }, [id])
+  }, [id]);
 
   useEffect(() => {
-    if(!big)
-    dispatch(HidenTabNavigation())
-  }, [big])
-
+    if (!big) {
+      dispatch(HidenTabNavigation());
+    }
+  }, [big]);
 
   useEffect(() => {
-
     if (selectedVidioId?.video) {
-      setVidio(true)
-      dispatch(GetVidioStatistic(selectedVidioId?.id, token))
+      setVidio(true);
+      dispatch(GetVidioStatistic(selectedVidioId?.id, token));
+    } else {
+      setVidio(false);
     }
-    else {
-      setVidio(false)
-    }
-  }, [selectedVidioId])
+  }, [selectedVidioId]);
 
-  const [statistic, setStatistic] = useState(false)
+  const [statistic, setStatistic] = useState(false);
 
   const navigation = useNavigation();
   const renderBackdrop = useCallback(
@@ -59,56 +66,73 @@ export const ViewComponent = ({ id, token, close, big = false, selectedVidioId }
     <BottomSheet
       index={0}
       snapPoints={['80%']}
-<<<<<<< HEAD
-containerStyle = {{zIndex:99999}}
-=======
-
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
+      containerStyle={{zIndex: 99999}}
       backdropComponent={renderBackdrop}
       enablePanDownToClose={true}
       onClose={() => {
-        dispatch(ShowTabNavigation())
-        close()
+        dispatch(ShowTabNavigation());
+        close();
       }}
-      style={{ zIndex: 999993, postion: 'absalute' }}
-    >
-      <View style={{ height: '100%' }}>
+      style={{zIndex: 999993, postion: 'absalute'}}>
+      <View style={{height: '100%'}}>
         <View
-          style={[Styles.flexAlignItems, { justifyContent: 'center', marginVertical: 20 },]}>
+          style={[
+            Styles.flexAlignItems,
+            {justifyContent: 'center', marginVertical: 20},
+          ]}>
           <StatisticSvg />
         </View>
-        {!statistic ?
+        {!statistic ? (
           <ViewList
             navigation={navigation}
             id={id}
             token={token}
             close={close}
-          /> :
+          />
+        ) : (
           <StatisticList vidio={vidio} token={token} id={id} />
-        }
+        )}
 
-        <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', gap: 8, height: big ? 100 : 50, alignItems: 'center' }}>
-          <TouchableOpacity style={[{ padding: 10, borderRadius: 10, }, statistic == false && { backgroundColor: '#FFC24B', }]} onPress={() => setStatistic(false)}>
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 8,
+            height: big ? 100 : 50,
+            alignItems: 'center',
+          }}>
+          <TouchableOpacity
+            style={[
+              {padding: 10, borderRadius: 10},
+              statistic == false && {backgroundColor: '#FFC24B'},
+            ]}
+            onPress={() => setStatistic(false)}>
             <ViewListSwg active={!statistic} />
           </TouchableOpacity>
           <View
             style={
-              statistic ? {
-                transform: [{ rotate: '180deg' }],
-                marginRight: 10,
-              } : {
-                marginLeft: 10,
-              }
-            }
-          >
+              statistic
+                ? {
+                    transform: [{rotate: '180deg'}],
+                    marginRight: 10,
+                  }
+                : {
+                    marginLeft: 10,
+                  }
+            }>
             <ArrowSvg1 />
           </View>
-          <TouchableOpacity style={[{ padding: 10, borderRadius: 10 }, statistic && { backgroundColor: '#FFC24B', }]} onPress={() => setStatistic(true)}>
+          <TouchableOpacity
+            style={[
+              {padding: 10, borderRadius: 10},
+              statistic && {backgroundColor: '#FFC24B'},
+            ]}
+            onPress={() => setStatistic(true)}>
             <StatisticSvg active={!statistic} />
           </TouchableOpacity>
         </View>
       </View>
-
     </BottomSheet>
   );
-}
+};

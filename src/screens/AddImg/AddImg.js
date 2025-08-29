@@ -14,7 +14,6 @@ import {
   Alert,
 } from 'react-native';
 
-<<<<<<< HEAD
 import {useDispatch, useSelector} from 'react-redux';
 import {GetCatalogAction} from '../../store/action/action';
 import {Styles} from '../../styles/Styles';
@@ -30,17 +29,6 @@ import {
 import {Status} from './component/status';
 import {AppColors} from '../../styles/AppColors';
 import {CommonActions, useFocusEffect} from '@react-navigation/native';
-=======
-import { useDispatch, useSelector } from 'react-redux';
-import { GetCatalogAction } from '../../store/action/action';
-import { Styles } from '../../styles/Styles';
-import { t } from '../../components/lang';
-import { ClearCreatPost } from '../../store/action/clearAction';
-import { AddImage, CloseSvg1, FontFemalySvg, SelectColor, TextSvg2 } from '../../assets/svg/Svgs';
-import { Status } from './component/status';
-import { AppColors } from '../../styles/AppColors';
-import { CommonActions, useFocusEffect } from '@react-navigation/native';
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
 // import { openPicker } from '@baronha/react-native-multiple-image-picker';
 import ImagePicker from 'react-native-image-crop-picker';
 
@@ -317,18 +305,13 @@ export const AddImg = ({navigation}) => {
   }, [createPost.status]);
 
   const addPhoto = async (data, i) => {
-<<<<<<< HEAD
     setFirst(true);
-=======
-    setFirst(true)
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
 
     try {
       ImagePicker.openPicker({
         cropping: false,
         compressImageQuality: 1,
         multiple: true,
-<<<<<<< HEAD
         mediaType: 'photo',
         videoQuality: 'low',
         durationLimit: 60,
@@ -339,24 +322,11 @@ export const AddImg = ({navigation}) => {
       })
         .then(response => {
           let item = [...data];
-=======
-        mediaType: "photo",
-        videoQuality: "low",
-        durationLimit: 60,
-        storageOptions: {
-          skipBackup: true,
-          path: 'images'
-        }
-      })
-        .then((response) => {
-          let item = [...data]
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
           if (response.didCancel) {
             if (uri.length == 0) {
               navigation.dispatch(
                 CommonActions.reset({
                   index: 0,
-<<<<<<< HEAD
                   routes: [{name: 'TabNavigation'}],
                 }),
               );
@@ -383,38 +353,6 @@ export const AddImg = ({navigation}) => {
       navigation.navigate('TabNavigation');
     }
   };
-=======
-                  routes: [{ name: 'TabNavigation' }],
-                })
-              );
-              setFirst(false)
-            }
-          }
-          else {
-            if (response.length) {
-              setFirst(true)
-            }
-            response?.map((elm, i) => {
-              if (item.length <= 10) {
-                console.log(elm)
-                item.push({ uri: elm.path, mime: elm?.mime });
-              }
-            })
-            setUri(item);
-          }
-        })
-        .catch((error) => {
-        });
-    }
-    catch (error) {
-      Close()
-      setFirst(false)
-      navigation.navigate('TabNavigation')
-    }
-  }
-
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
-
 
   const delateFoto = index => {
     let item = [...uri];
@@ -477,7 +415,7 @@ export const AddImg = ({navigation}) => {
     item[i] = e;
     setBegraund(item);
   };
-  if (first)
+  if (first) {
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -1202,7 +1140,7 @@ export const AddImg = ({navigation}) => {
         </View>
       </KeyboardAvoidingView>
     );
-  else {
+  } else {
     return;
   }
 };

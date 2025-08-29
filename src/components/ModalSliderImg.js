@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
-<<<<<<< HEAD
 import {AppColors} from '../styles/AppColors';
 import {CloseSvg} from '../assets/svg/Svgs';
 
@@ -32,16 +31,6 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
       },
     );
   };
-=======
-import { AppColors } from '../styles/AppColors';
-import { CloseSvg } from '../assets/svg/Svgs';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
-export const ModalSliderImg = ({ photo, activePhoto,close }) => {
-  const [active, setActive] = useState(activePhoto || 0);
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
 
   return (
     <View style={styles.wrapper}>
@@ -51,7 +40,6 @@ export const ModalSliderImg = ({ photo, activePhoto,close }) => {
         pagingEnabled
         showPagination={false}
         data={photo}
-<<<<<<< HEAD
         onChangeIndex={({index}) => setActive(index)}
         style={styles.swiper}
         renderItem={({item, index}) => {
@@ -74,23 +62,6 @@ export const ModalSliderImg = ({ photo, activePhoto,close }) => {
                 onPress={() => close()}
                 style={{position: 'absolute', right: 10, top: 10}}>
                 <CloseSvg color="red" />
-=======
-        onChangeIndex={({ index }) => setActive(index)}
-        style={styles.swiper}
-        renderItem={({ item }) => {
-          let height = item.height - 200 > item.width ? 565 : 329;
-          const imageUrl = `https://chambaonline.pro/uploads/${item.photo}`;
-
-          return (
-            <View style={styles.imageWrapper}>
-              <Image
-                source={{ uri: imageUrl }}
-                style={[styles.image, { height }]}
-                resizeMode="cover"
-              />
-              <TouchableOpacity onPress={()=>close()} style  = {{position:'absolute',right:10,top:10}}>
-                <CloseSvg color='red'  />
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
               </TouchableOpacity>
             </View>
           );
@@ -103,11 +74,7 @@ export const ModalSliderImg = ({ photo, activePhoto,close }) => {
               key={i}
               style={[
                 styles.pagination,
-<<<<<<< HEAD
                 i === active && {backgroundColor: AppColors.GoldenTainoi_Color},
-=======
-                i === active && { backgroundColor: AppColors.GoldenTainoi_Color },
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
               ]}
             />
           ))}
@@ -118,24 +85,18 @@ export const ModalSliderImg = ({ photo, activePhoto,close }) => {
 };
 const styles = StyleSheet.create({
   wrapper: {
-<<<<<<< HEAD
     height: '100%',
     width: '100%',
-    justifyContent:'center',
-=======
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
+    justifyContent: 'center',
   },
   swiper: {
     flexGrow: 0,
   },
   imageWrapper: {
     width: windowWidth,
-<<<<<<< HEAD
     marginTop: 50,
     justifyContent: 'center',
     alignItems: 'center',
-=======
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
   },
   image: {
     width: windowWidth,
@@ -145,11 +106,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-<<<<<<< HEAD
-    marginTop:25,
-=======
-    marginTop: 15,
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
+    marginTop: 25,
   },
   pagination: {
     width: 6,

@@ -1,67 +1,78 @@
-import { useState, useEffect } from 'react';
-import { Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ConfirmCode } from '../../components/ConfirmCode';
-import { Styles } from '../../styles/Styles';
-import { Button } from '../../ui/Button';
-import { Input } from '../../ui/Input';
-import { useDispatch, useSelector } from 'react-redux'
-import { ClearConfirmPasswordAction, ClearRegisterAction, ConfirmRegisterCode, RegisterAction } from '../../store/action/action';
-import { t } from '../../components/lang';
+import {useState, useEffect} from 'react';
+import {
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {ConfirmCode} from '../../components/ConfirmCode';
+import {Styles} from '../../styles/Styles';
+import {Button} from '../../ui/Button';
+import {Input} from '../../ui/Input';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  ClearConfirmPasswordAction,
+  ClearRegisterAction,
+  ConfirmRegisterCode,
+  RegisterAction,
+} from '../../store/action/action';
+import {t} from '../../components/lang';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppColors } from '../../styles/AppColors';
+import {AppColors} from '../../styles/AppColors';
 
-export const RegisterScreen = ({ navigation, route }) => {
-  const [name, setName] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [ooo, setOoo] = useState({ value: '', error: '' })
+export const RegisterScreen = ({navigation, route}) => {
+  const [name, setName] = useState({value: '', error: ''});
+  const [password, setPassword] = useState({value: '', error: ''});
+  const [email, setEmail] = useState({value: '', error: ''});
+  const [ooo, setOoo] = useState({value: '', error: ''});
   const [sendMail, setSnedMail] = useState(false);
-  const [disableButton, setDisableButton] = useState(true)
-  const [code, setCode] = useState('')
-  const dispatch = useDispatch()
-  const register = useSelector(st => st.register)
+  const [disableButton, setDisableButton] = useState(true);
+  const [code, setCode] = useState('');
+  const dispatch = useDispatch();
+  const register = useSelector(st => st.register);
   const mainData = useSelector(st => st.mainData);
-  const confirm = useSelector(st => st.confirmRegister)
-  const [show, setShow] = useState(false)
+  const confirm = useSelector(st => st.confirmRegister);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     if (name.value && password.value && email.value) {
-      setDisableButton(false)
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
     }
-    else {
-      setDisableButton(true)
-    }
-  }, [name, password, email])
+  }, [name, password, email]);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', async () => {
-      dispatch(ClearRegisterAction())
-      setSnedMail(false)
+      dispatch(ClearRegisterAction());
+      setSnedMail(false);
     });
     return unsubscribe;
   }, [navigation]);
 
   function ValidateEmail(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return (true)
+      return true;
     }
-    return (false)
+    return false;
   }
   const Validation = () => {
-    let item = true
+    let item = true;
     if (password.value.length < 1) {
-      item = false
-      setPassword({ ...password, error: 'Пароль должен содержать не менее 1-ми символов.' })
-    }
-    else {
-      setPassword({ ...password, error: '' })
+      item = false;
+      setPassword({
+        ...password,
+        error: 'Пароль должен содержать не менее 1-ми символов.',
+      });
+    } else {
+      setPassword({...password, error: ''});
     }
     if (!ValidateEmail(email.value)) {
-      setEmail({ ...email, error: 'Введите корректный адрес эл. почты' })
-      item = false
-
-    }
-    else {
-      setEmail({ ...email, error: '' })
+      setEmail({...email, error: 'Введите корректный адрес эл. почты'});
+      item = false;
+    } else {
+      setEmail({...email, error: ''});
     }
     // if (route.params.selected == 'Legal_entity') {
     //   if (ooo.value == "") {
@@ -73,68 +84,63 @@ export const RegisterScreen = ({ navigation, route }) => {
     //   }
     // }
     if (item) {
-      dispatch(RegisterAction({
-        name: name.value,
-        email: email.value,
-        password: password.value,
-        user_type: route.params.selected,
-        ooo: ooo.value
-      }))
+      dispatch(
+        RegisterAction({
+          name: name.value,
+          email: email.value,
+          password: password.value,
+          user_type: route.params.selected,
+          ooo: ooo.value,
+        }),
+      );
     }
-  }
+  };
 
   useEffect(() => {
     if (register.status) {
-      setSnedMail(true)
+      setSnedMail(true);
     }
-  }, [register.status])
-
+  }, [register.status]);
 
   const ShowDesctiption = async () => {
-    await AsyncStorage.setItem('showDescription', 'yes')
-
-  }
-
+    await AsyncStorage.setItem('showDescription', 'yes');
+  };
 
   useEffect(() => {
     // if (confirm.status && route.params.selected == 'Legal_entity') {
     //   setShow(true)
     // }
     if (confirm.status) {
-      Confirm()
+      Confirm();
     }
-  }, [confirm.status])
+  }, [confirm.status]);
 
   useEffect(() => {
     if (code.length === 5) {
-      dispatch(ConfirmRegisterCode({
-        email: email.value,
-        code: code
-      }))
+      dispatch(
+        ConfirmRegisterCode({
+          email: email.value,
+          code: code,
+        }),
+      );
     }
-  }, [code])
-
-
+  }, [code]);
 
   const Confirm = () => {
-    setShow(false)
-    dispatch(ClearConfirmPasswordAction())
-    dispatch(ClearRegisterAction())
+    setShow(false);
+    dispatch(ClearConfirmPasswordAction());
+    dispatch(ClearRegisterAction());
     // navigation.navigate('Catalog');
     navigation.reset({
       index: 0,
-      routes: [{ name: 'TabNavigation', params: { screen: 'Home' } }],
+      routes: [{name: 'TabNavigation', params: {screen: 'Home'}}],
     });
-    ShowDesctiption()
-  }
-<<<<<<< HEAD
-  
-=======
->>>>>>> 3ae3e5ce07e82409c0b0e19a787090959bacc2ff
+    ShowDesctiption();
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      {show &&
+      {show && (
         <Modal
           animationType="slide"
           transparent={true}
@@ -144,32 +150,48 @@ export const RegisterScreen = ({ navigation, route }) => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>В данный момент проводится модерация аккаунта, после проверки всех данных мы направим информацию на Вашу почту, указанную при регистрации.</Text>
-              <TouchableOpacity onPress={() => Confirm()} style={{ width: 200, backgroundColor: AppColors.Mustard_Color, justifyContent: 'center', alignItems: 'center', paddingVertical: 8, borderRadius: 10 }}>
-                <Text style={{ color: 'white' }}>Понятно</Text>
+              <Text style={styles.modalText}>
+                В данный момент проводится модерация аккаунта, после проверки
+                всех данных мы направим информацию на Вашу почту, указанную при
+                регистрации.
+              </Text>
+              <TouchableOpacity
+                onPress={() => Confirm()}
+                style={{
+                  width: 200,
+                  backgroundColor: AppColors.Mustard_Color,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingVertical: 8,
+                  borderRadius: 10,
+                }}>
+                <Text style={{color: 'white'}}>Понятно</Text>
               </TouchableOpacity>
             </View>
           </View>
         </Modal>
-      }
+      )}
       <View style={Styles.authScreen}>
-        <Text style={[Styles.darkSemiBold22, { marginBottom: 30 }]}>{t(mainData.lang).Registration}</Text>
+        <Text style={[Styles.darkSemiBold22, {marginBottom: 30}]}>
+          {t(mainData.lang).Registration}
+        </Text>
         <Input
           fontSize={9}
-          placeholder={route.params.selected == 'Individual' ?
-            t(mainData.lang).FirstnameLastnameorchannelname :
-            t(mainData.lang).Companyname
+          placeholder={
+            route.params.selected == 'Individual'
+              ? t(mainData.lang).FirstnameLastnameorchannelname
+              : t(mainData.lang).Companyname
           }
           error={name.error}
           value={name.value}
-          onChange={(e) => setName({ ...name, value: e })}
+          onChange={e => setName({...name, value: e})}
         />
         <Input
           fontSize={9}
           placeholder={t(mainData.lang).Enteryouremail}
           error={email.error || register.error?.email}
           value={email.value}
-          onChange={(e) => setEmail({ ...email, value: e })}
+          onChange={e => setEmail({...email, value: e})}
         />
         {/* {route.params.selected == 'Legal_entity' && <Input
           placeholder={"ООО"}
@@ -183,22 +205,35 @@ export const RegisterScreen = ({ navigation, route }) => {
           placeholder={t(mainData.lang).Createapassword}
           error={password.error}
           value={password.value}
-          onChange={(e) => setPassword({ ...password, value: e })}
+          onChange={e => setPassword({...password, value: e})}
           pass
         />
 
         {sendMail && (
-          <View style={{ alignItems: 'center' }}>
-            <Text style={[Styles.balihaiMedium13, { textAlign: 'center', marginBottom: 10,fontSize:10 }]}>
-              Код отправлен на почту, при отсутствии уведомления нажмите спам и рефреш
+          <View style={{alignItems: 'center'}}>
+            <Text
+              style={[
+                Styles.balihaiMedium13,
+                {textAlign: 'center', marginBottom: 10, fontSize: 10},
+              ]}>
+              Код отправлен на почту, при отсутствии уведомления нажмите спам и
+              рефреш
             </Text>
-            <ConfirmCode clear={confirm.error !== ''} code={(e) => setCode(e)} />
+            <ConfirmCode clear={confirm.error !== ''} code={e => setCode(e)} />
           </View>
         )}
         <Text style={[[Styles.tomatoMedium10]]}>
           {register.error?.server || confirm.error}
         </Text>
-        {!sendMail && <Button loading={register.loading} onPress={() => Validation()} disabled={disableButton} marginV={30} title={t(mainData.lang).Confirm} />}
+        {!sendMail && (
+          <Button
+            loading={register.loading}
+            onPress={() => Validation()}
+            disabled={disableButton}
+            marginV={30}
+            title={t(mainData.lang).Confirm}
+          />
+        )}
       </View>
     </ScrollView>
   );
@@ -209,7 +244,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
     margin: 20,
@@ -244,6 +279,6 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    color: 'black'
+    color: 'black',
   },
 });
