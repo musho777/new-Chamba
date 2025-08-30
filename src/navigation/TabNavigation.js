@@ -71,6 +71,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
       keyboardDidShowListener.remove();
     };
   }, []);
+  console.log(bottom);
   if (!isKeyboardVisible) {
     if (currentRouteName != 'AddImg' && show && !fullScreen) {
       return (
@@ -78,7 +79,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
           style={[
             styles.tabWrapper,
             {
-              bottom: Math.max(bottom, 10) + 5,
+              bottom:
+                bottom < 25
+                  ? Math.max(bottom, 10) - 3
+                  : Math.max(bottom, 10) + 5,
             },
           ]}>
           <BootomModal ref={bottomSheetRef} snapPoints={snapPoints}>
