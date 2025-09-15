@@ -569,7 +569,10 @@ export const AddImg = ({navigation}) => {
                           styles.stackedPhotoContainer,
                           active === index && styles.selectedStackedContainer,
                         ]}
-                        onPress={() => setActive(index)}
+                        onPress={() => {
+                          setActiveTab(1);
+                          setActive(index);
+                        }}
                         activeOpacity={0.8}>
                         <FastImage
                           style={styles.stackedPhoto}
@@ -628,7 +631,10 @@ export const AddImg = ({navigation}) => {
                             styles.gridPhotoContainer,
                             active === 0 && styles.selectedPhotoContainer,
                           ]}
-                          onPress={() => setActive(0)}
+                          onPress={() => {
+                            setActiveTab(1);
+                            setActive(0);
+                          }}
                           activeOpacity={0.8}>
                           <FastImage
                             style={styles.gridPhoto}
@@ -677,7 +683,11 @@ export const AddImg = ({navigation}) => {
                             styles.gridPhotoContainer,
                             active === 1 && styles.selectedPhotoContainer,
                           ]}
-                          onPress={() => setActive(1)}
+                          onPress={() => {
+                            setActiveTab(1);
+
+                            setActive(1);
+                          }}
                           activeOpacity={0.8}>
                           <FastImage
                             style={styles.gridPhoto}
@@ -727,7 +737,11 @@ export const AddImg = ({navigation}) => {
                             styles.gridPhotoContainer,
                             active === 2 && styles.selectedPhotoContainer,
                           ]}
-                          onPress={() => setActive(2)}
+                          onPress={() => {
+                            setActiveTab(1);
+
+                            setActive(2);
+                          }}
                           activeOpacity={0.8}>
                           <FastImage
                             style={styles.gridPhoto}
@@ -775,7 +789,11 @@ export const AddImg = ({navigation}) => {
                             styles.gridPhotoContainer,
                             active === 3 && styles.selectedPhotoContainer,
                           ]}
-                          onPress={() => setActive(3)}
+                          onPress={() => {
+                            setActiveTab(1);
+
+                            setActive(3);
+                          }}
                           activeOpacity={0.8}>
                           <FastImage
                             style={styles.gridPhoto}
@@ -868,7 +886,11 @@ export const AddImg = ({navigation}) => {
                         styles.photoSelectorButton,
                         active === index && styles.photoSelectorActive,
                       ]}
-                      onPress={() => setActive(index)}>
+                      onPress={() => {
+                        setActiveTab(1);
+
+                        setActive(index);
+                      }}>
                       <Text
                         style={[
                           styles.photoSelectorText,
@@ -924,7 +946,11 @@ export const AddImg = ({navigation}) => {
                         styles.photoSelectorButton,
                         active === index && styles.photoSelectorActive,
                       ]}
-                      onPress={() => setActive(index)}>
+                      onPress={() => {
+                        setActiveTab(1);
+
+                        setActive(index);
+                      }}>
                       <Text
                         style={[
                           styles.photoSelectorText,
@@ -1011,7 +1037,11 @@ export const AddImg = ({navigation}) => {
                         styles.photoSelectorButton,
                         active === index && styles.photoSelectorActive,
                       ]}
-                      onPress={() => setActive(index)}>
+                      onPress={() => {
+                        setActiveTab(1);
+
+                        setActive(index);
+                      }}>
                       <Text
                         style={[
                           styles.photoSelectorText,
