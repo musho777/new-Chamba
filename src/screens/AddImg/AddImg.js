@@ -1026,90 +1026,92 @@ export const AddImg = ({navigation}) => {
               </ScrollView>
             </View>
           )}
-          <View>
-            {postOrientation === 'vertical' && uri.length > 0 && (
-              <View style={styles.photoSelector}>
-                {uri.map((_, index) => (
-                  <TouchableOpacity
-                    key={index}
-                    style={[
-                      styles.photoSelectorButton,
-                      active === index && styles.photoSelectorActive,
-                    ]}
-                    onPress={() => {
-                      setActiveTab(1);
-
-                      setActive(index);
-                    }}>
-                    <Text
+          {activeTab == 5 && (
+            <View>
+              {postOrientation === 'vertical' && uri.length > 0 && (
+                <View style={styles.photoSelector}>
+                  {uri.map((_, index) => (
+                    <TouchableOpacity
+                      key={index}
                       style={[
-                        styles.photoSelectorText,
-                        active === index && styles.photoSelectorTextActive,
-                      ]}>
-                      Photo {index + 1}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-            <ScrollView
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              contentContainerStyle={{
-                gap: 10,
-                paddingHorizontal: 10,
-                height: 50,
-                alignItems: 'center',
-              }}>
-              <TouchableOpacity
-                style={{
-                  borderWidth: 1,
-                  borderColor: 'white',
-                  padding: 8,
-                  borderRadius: 5,
-                  justifyContent: 'center',
+                        styles.photoSelectorButton,
+                        active === index && styles.photoSelectorActive,
+                      ]}
+                      onPress={() => {
+                        setActiveTab(1);
+
+                        setActive(index);
+                      }}>
+                      <Text
+                        style={[
+                          styles.photoSelectorText,
+                          active === index && styles.photoSelectorTextActive,
+                        ]}>
+                        Photo {index + 1}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
+              <ScrollView
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                contentContainerStyle={{
+                  gap: 10,
+                  paddingHorizontal: 10,
+                  height: 50,
                   alignItems: 'center',
-                }}
-                onPress={() => {
-                  if (postOrientation === 'horizontal') {
-                    // Apply to all photos in horizontal mode
-                    uri.forEach((_, index) =>
-                      changeFontColor('rgba(0,0,0,0.5)', index),
-                    );
-                  } else {
-                    // Apply to selected photo in vertical mode
-                    changeFontColor('rgba(0,0,0,0.5)', active);
-                  }
                 }}>
-                <Text style={{color: 'white', fontSize: 15}}>x</Text>
-              </TouchableOpacity>
-              {color3.map((elm, i) => {
-                return (
-                  <TouchableOpacity
-                    onPress={() => {
-                      if (postOrientation === 'horizontal') {
-                        // Apply to all photos in horizontal mode
-                        uri.forEach((_, index) =>
-                          changeFontColor(elm.title, index),
-                        );
-                      } else {
-                        // Apply to selected photo in vertical mode
-                        changeFontColor(elm.title, active);
-                      }
-                    }}
-                    key={i}
-                    style={{
-                      width: 20,
-                      height: 20,
-                      borderRadius: 30,
-                      backgroundColor: elm.title,
-                    }}
-                  />
-                );
-              })}
-            </ScrollView>
-          </View>
+                <TouchableOpacity
+                  style={{
+                    borderWidth: 1,
+                    borderColor: 'white',
+                    padding: 8,
+                    borderRadius: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  onPress={() => {
+                    if (postOrientation === 'horizontal') {
+                      // Apply to all photos in horizontal mode
+                      uri.forEach((_, index) =>
+                        changeFontColor('rgba(0,0,0,0.5)', index),
+                      );
+                    } else {
+                      // Apply to selected photo in vertical mode
+                      changeFontColor('rgba(0,0,0,0.5)', active);
+                    }
+                  }}>
+                  <Text style={{color: 'white', fontSize: 15}}>x</Text>
+                </TouchableOpacity>
+                {color3.map((elm, i) => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => {
+                        if (postOrientation === 'horizontal') {
+                          // Apply to all photos in horizontal mode
+                          uri.forEach((_, index) =>
+                            changeFontColor(elm.title, index),
+                          );
+                        } else {
+                          // Apply to selected photo in vertical mode
+                          changeFontColor(elm.title, active);
+                        }
+                      }}
+                      key={i}
+                      style={{
+                        width: 20,
+                        height: 20,
+                        borderRadius: 30,
+                        backgroundColor: elm.title,
+                      }}
+                    />
+                  );
+                })}
+              </ScrollView>
+            </View>
           )}
+
           <View horizontal showsHorizontalScrollIndicator={false}>
             <View
               style={{
