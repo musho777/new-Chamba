@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, StyleSheet} from 'react-native';
+import {Modal, StyleSheet, View} from 'react-native';
 import {ModalSliderImg} from './ModalSliderImg';
 import {BlurView} from '@react-native-community/blur';
 
@@ -17,7 +17,7 @@ export const SliderModal = ({
       visible={modalVisible}
       onRequestClose={close}
       statusBarTranslucent={true}>
-      <BlurView
+      <View
         style={styles.centeredView}
         blurType="dark"
         blurAmount={40}
@@ -29,7 +29,7 @@ export const SliderModal = ({
           photo={photo}
           activePhoto={activePhoto}
         />
-      </BlurView>
+      </View>
     </Modal>
   );
 };
@@ -38,5 +38,6 @@ const styles = StyleSheet.create({
   centeredView: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'black',
   },
 });
