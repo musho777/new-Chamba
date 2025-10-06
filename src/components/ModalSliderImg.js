@@ -65,7 +65,7 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
           );
         }}
       />
-      {photo.length > 1 && (
+      {photo.length > 1 ? (
         <View style={styles.paginationWrapper}>
           {photo.map((_, i) => (
             <View
@@ -77,6 +77,8 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
             />
           ))}
         </View>
+      ) : (
+        <View style={styles.paginationWrapper} />
       )}
     </View>
   );
