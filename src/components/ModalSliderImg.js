@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useState} from 'react';
 import {
   View,
@@ -7,7 +7,13 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import SwiperFlatList from 'react-native-swiper-flatlist';
+import Animated, {
+  Extrapolation,
+  interpolate,
+  interpolateColor,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
+import Carousel from 'react-native-reanimated-carousel';
 import {AppColors} from '../styles/AppColors';
 import {CloseSvg} from '../assets/svg/Svgs';
 
@@ -16,6 +22,8 @@ const windowWidth = Dimensions.get('window').width;
 export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
   const [active, setActive] = useState(activePhoto || 0);
   const [imageHeights, setImageHeights] = useState({});
+  const PAGE_WIDTH = windowWidth;
+  const PAGE_HEIGHT = 600;
 
   const calculateImageHeight = (imageUrl, index) => {
     Image.getSize(
@@ -32,17 +40,62 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
     );
   };
 
+  const animationStyle = useCallback(
+    value => {
+      'worklet';
+      const zIndex = interpolate(value, [-1, 0, 1], [-1000, 0, -1000]);
+      const translateX = interpolate(
+        value,
+        [-1, 0, 1],
+        [-PAGE_WIDTH, 0, PAGE_WIDTH],
+        Extrapolation.CLAMP,
+      );
+      const scale = interpolate(
+        value,
+        [-1, 0, 1],
+        [0.8, 1, 0.8],
+        Extrapolation.CLAMP,
+      );
+      const rotateY = interpolate(
+        value,
+        [-1, 0, 1],
+        [-90, 0, 90],
+        Extrapolation.CLAMP,
+      );
+      const opacity = interpolate(
+        value,
+        [-1, 0, 1],
+        [0.5, 1, 0.5],
+        Extrapolation.CLAMP,
+      );
+
+      return {
+        transform: [
+          {perspective: 800},
+          {rotateY: `${rotateY}deg`},
+          {translateX},
+          {scale},
+        ],
+        opacity,
+        zIndex,
+      };
+    },
+    [PAGE_WIDTH],
+  );
+
   return (
     <View style={styles.wrapper}>
-      <SwiperFlatList
-        index={active}
-        horizontal
-        pagingEnabled
-        showPagination={false}
+      <Carousel
+        defaultIndex={active}
+        width={PAGE_WIDTH}
+        height={PAGE_HEIGHT}
         data={photo}
-        onChangeIndex={({index}) => setActive(index)}
-        style={styles.swiper}
-        renderItem={({item, index}) => {
+        onSnapToItem={index => setActive(index)}
+        pagingEnabled={true}
+        snapEnabled={true}
+        customAnimation={animationStyle}
+        scrollAnimationDuration={600}
+        renderItem={({item, index, animationValue}) => {
           const imageUrl = `https://chambaonline.pro/uploads/${item.photo}`;
 
           if (!imageHeights[index]) {
@@ -51,17 +104,14 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
           const imageHeight = imageHeights[index] || 400;
 
           return (
-            <View style={styles.imageWrapper}>
-              <Image
-                source={{uri: imageUrl}}
-                style={[styles.image, {height: imageHeight > 400 ? 525 : 400}]}
-              />
-              <TouchableOpacity
-                onPress={() => close()}
-                style={{position: 'absolute', right: 10, top: 10}}>
-                <CloseSvg color="red" />
-              </TouchableOpacity>
-            </View>
+            <CustomItem
+              item={item}
+              index={index}
+              animationValue={animationValue}
+              imageUrl={imageUrl}
+              imageHeight={imageHeight}
+              close={close}
+            />
           );
         }}
       />
@@ -83,18 +133,66 @@ export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
     </View>
   );
 };
+
+const CustomItem = ({
+  item,
+  index,
+  animationValue,
+  imageUrl,
+  imageHeight,
+  close,
+}) => {
+  const maskStyle = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(
+      animationValue.value,
+      [-1, 0, 1],
+      ['#000000dd', 'transparent', '#000000dd'],
+    );
+
+    return {
+      backgroundColor,
+    };
+  }, [animationValue]);
+
+  return (
+    <View style={styles.imageWrapper}>
+      <Image
+        source={{uri: imageUrl}}
+        style={[styles.image, {height: imageHeight > 400 ? 520 : 400}]}
+      />
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => close()}
+        style={{position: 'absolute', right: 10, top: 10}}>
+        <CloseSvg color="red" />
+      </TouchableOpacity>
+      <Animated.View
+        pointerEvents="none"
+        style={[
+          {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+          },
+          maskStyle,
+        ]}
+      />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   wrapper: {
     height: '100%',
     width: '100%',
     justifyContent: 'center',
   },
-  swiper: {
-    flexGrow: 0,
-  },
   imageWrapper: {
     width: windowWidth,
     marginTop: 50,
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
