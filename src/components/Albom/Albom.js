@@ -36,8 +36,4 @@ const styles = StyleSheet.create({
   block: {
     marginBottom: 5,
   },
-  albom: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
 });
