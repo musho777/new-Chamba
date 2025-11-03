@@ -1,9 +1,9 @@
 import {useState, useEffect, useCallback} from 'react';
 import {View, ActivityIndicator, FlatList, StatusBar} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {Album} from '../../components/Album/Album';
 import {GetMyBooksAction} from '../../store/action/action';
 import {useFocusEffect} from '@react-navigation/native';
+import {Album} from '../../components/Albom/Albom';
 
 export const SavedPostScreen = ({navigation}) => {
   const dispatch = useDispatch();

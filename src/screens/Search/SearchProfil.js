@@ -1,3 +1,4 @@
+import React from 'react';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {
   StyleSheet,
@@ -12,29 +13,24 @@ import {
   StatusBar,
 } from 'react-native';
 import {Styles} from '../../styles/Styles';
-import {
-  BackArrow,
-  BackArrowWhite,
-  CheckMarkUserSvg,
-} from '../../assets/svg/Svgs';
+import {BackArrowWhite, CheckMarkUserSvg} from '../../assets/svg/Svgs';
 import {Button} from '../../ui/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   AddDeleteFollowAction,
   AddDeletFollowAction,
   Api,
-  ClearFollowrs,
 } from '../../store/action/action';
 import {t} from '../../components/lang';
 import {useFocusEffect} from '@react-navigation/native';
 import {ProfilInfo} from '../Profile/components/profilInfo';
-import {Album} from '../../components/Album/Album';
 import {InfoBlock} from '../Profile/InfoBlock';
 import debounce from 'lodash/debounce';
 import {AlbomAndInfo} from '../Profile/components/albomAndInfo';
 import {EmptyFlatlist} from '../../components/emptyFlatlist';
 import FastImage from 'react-native-fast-image';
 import {SliderModal} from '../../components/SliderModal';
+import {Album} from '../../components/Albom/Albom';
 
 const {width} = Dimensions.get('window');
 

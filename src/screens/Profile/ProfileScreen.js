@@ -13,11 +13,11 @@ import {GetPostsAction, getUserInfoAction} from '../../store/action/action';
 import {ProfilImage} from './components/profilImage';
 import {ProfilInfo} from './components/profilInfo';
 import {AlbomAndInfo} from './components/albomAndInfo';
-import {Album} from '../../components/Album/Album';
 import {t} from '../../components/lang';
 import {InfoBlock} from './InfoBlock';
 import {EmptyFlatlist} from '../../components/emptyFlatlist';
 import {useFocusEffect} from '@react-navigation/native';
+import {Album} from '../../components/Albom/Albom';
 
 export const ProfileScreen = () => {
   const dispatch = useDispatch();
