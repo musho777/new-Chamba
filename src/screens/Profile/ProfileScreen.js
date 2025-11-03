@@ -1,14 +1,11 @@
+import React from 'react';
 import {useCallback, useEffect, useState} from 'react';
 import {
   TouchableOpacity,
-  SafeAreaView,
   ActivityIndicator,
   StyleSheet,
   FlatList,
-  Text,
-  Dimensions,
   View,
-  Image,
   StatusBar,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -16,8 +13,7 @@ import {GetPostsAction, getUserInfoAction} from '../../store/action/action';
 import {ProfilImage} from './components/profilImage';
 import {ProfilInfo} from './components/profilInfo';
 import {AlbomAndInfo} from './components/albomAndInfo';
-import {Albom} from '../../components/Albom/Albom';
-import debounce from 'lodash/debounce';
+import {Album} from '../../components/Album/Album';
 import {t} from '../../components/lang';
 import {InfoBlock} from './InfoBlock';
 import {EmptyFlatlist} from '../../components/emptyFlatlist';
@@ -55,7 +51,7 @@ export const ProfileScreen = () => {
   const renderItem1 = ({item, index}) => {
     if (item?.id) {
       return (
-        <Albom
+        <Album
           id={item.id}
           index={index}
           lastItem={index == getPosts.data.length - 1 && !getPosts.nextPage}
@@ -109,7 +105,7 @@ export const ProfileScreen = () => {
           refreshing={user?.loading}
           contentContainerStyle={{paddingHorizontal: 15}}
           renderItem={seletedScreen ? renderItem1 : renderItem2}
-          numColumns={2}
+          numColumns={3}
           ListEmptyComponent={ListEmptyComponent}
           scrollEventThrottle={16}
           onEndReached={handleEndReached}
