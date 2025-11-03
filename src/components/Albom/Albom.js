@@ -1,4 +1,3 @@
-import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Empty} from './component/empty';
 import {ImageComponent} from '../Image/image';
@@ -9,7 +8,11 @@ export const Album = ({id, data, seved, my = false, elm, lastItem, index}) => {
   return (
     <View
       activeOpacity={1}
-      style={[styles.block, lastItem && {marginBottom: 55}]}>
+      style={[
+        styles.block,
+        lastItem && {marginBottom: 55},
+        index % 3 === 1 && {marginHorizontal: 5},
+      ]}>
       <ImageComponent
         adminStatus={elm?.admin_status}
         onPress={() => {
@@ -35,5 +38,9 @@ export const Album = ({id, data, seved, my = false, elm, lastItem, index}) => {
 const styles = StyleSheet.create({
   block: {
     marginBottom: 5,
+  },
+  albom: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 });
