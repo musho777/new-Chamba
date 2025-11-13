@@ -10,7 +10,6 @@ import {StartSvg} from '../../assets/svg/Svgs';
 import React, {useCallback, useState} from 'react';
 import FastImage from 'react-native-fast-image';
 import {useFocusEffect} from '@react-navigation/native';
-import {InReview} from '../InReview';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -185,10 +184,9 @@ export const ImageComponent = React.memo(
 
 const styles = StyleSheet.create({
   img: {
-    width: windowWidth / 3 - 13,
-    height: windowWidth / 3 - 13,
-    borderRadius: 8,
-    backgroundColor: '#dedcdc',
+    width: windowWidth / 3 - 11.2,
+    height: windowWidth / 3 - 11.2,
+    borderRadius: 0,
   },
 
   playerIcone: {

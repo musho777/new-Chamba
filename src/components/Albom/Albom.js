@@ -11,7 +11,7 @@ export const Album = ({id, data, seved, my = false, elm, lastItem, index}) => {
       style={[
         styles.block,
         lastItem && {marginBottom: 55},
-        index % 3 === 1 && {marginHorizontal: 5},
+        index % 3 === 1 && {marginHorizontal: 2},
       ]}>
       <ImageComponent
         adminStatus={elm?.admin_status}
@@ -37,7 +37,7 @@ export const Album = ({id, data, seved, my = false, elm, lastItem, index}) => {
 
 const styles = StyleSheet.create({
   block: {
-    marginBottom: 5,
+    marginBottom: 2,
   },
   albom: {
     flexDirection: 'row',
