@@ -228,7 +228,7 @@ export const SearchProfil = ({navigation, route}) => {
         refreshing={postLoading}
         contentContainerStyle={{paddingHorizontal: 15}}
         renderItem={renderItem}
-        numColumns={2}
+        numColumns={3}
         scrollEventThrottle={16}
         ListEmptyComponent={ListEmptyComponent}
         // getItemLayout={getItemLayout}

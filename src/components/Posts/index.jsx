@@ -299,7 +299,7 @@ export const Posts = ({
               position: 'absolute',
               top: 45,
               backgroundColor: GetCveta(cveta, active),
-              borderRadius: 5,
+
               marginHorizontal: 5,
             }}>
             {description?.length > 0 && description[active] && (
@@ -427,7 +427,7 @@ export const Posts = ({
                         position: 'absolute',
                         top: 45,
                         backgroundColor: GetCveta(cveta, 0),
-                        borderRadius: 5,
+
                         marginHorizontal: 5,
                         zIndex: 999,
                       }}>
@@ -490,7 +490,7 @@ export const Posts = ({
             ) : photos.length === 2 ? (
               // Макет для 2 фото: оба 100% высоты 50% ширины
               <>
-                <View style={[styles.gridRow, {gap: 5}]}>
+                <View style={[styles.gridRow, {gap: 2.5}]}>
                   <TouchableOpacity
                     style={[styles.gridPhotoContainer, {width: '50%'}]}
                     onPress={() => {
@@ -504,7 +504,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 45,
                           backgroundColor: GetCveta(cveta, 0),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -576,7 +576,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 45,
                           backgroundColor: GetCveta(cveta, 1),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -640,7 +640,7 @@ export const Posts = ({
             ) : photos.length === 3 ? (
               // Макет 1x2 для 3 фото: 1-е фото 100% высоты 50% ширины, 2-е и 3-е фото 50% высоты 50% ширины
               <>
-                <View style={[styles.gridRow, {gap: 5}]}>
+                <View style={[styles.gridRow, {gap: 2.5}]}>
                   <TouchableOpacity
                     style={[styles.gridPhotoContainer, {width: '50%'}]}
                     onPress={() => {
@@ -654,7 +654,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 45,
                           backgroundColor: GetCveta(cveta, 0),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -713,7 +713,8 @@ export const Posts = ({
                       style={[styles.gridPhoto, {height: 560}]}
                     />
                   </TouchableOpacity>
-                  <View style={{width: '50%', flexDirection: 'column', gap: 5}}>
+                  <View
+                    style={{width: '50%', flexDirection: 'column', gap: 2.5}}>
                     <TouchableOpacity
                       style={[styles.gridPhotoContainer, {height: 277.5}]}
                       onPress={() => {
@@ -727,73 +728,68 @@ export const Posts = ({
                             position: 'absolute',
                             top: 45,
                             backgroundColor: GetCveta(cveta, 1),
-                            borderRadius: 5,
+
                             marginHorizontal: 5,
                             zIndex: 999,
                           }}>
-                          {
-                            <View style={[{paddingHorizontal: 10}]}>
-                              <View>
-                                {description.descriptions[1] && (
-                                  <Text
-                                    style={[
-                                      Styles.darkMedium13,
-                                      {
-                                        color: GetColor(color, 1),
-                                        fontFamily: GetFont(font_family, 1),
-                                        backgroundColor: GetBegraund(
-                                          podcherknuti,
-                                          1,
-                                        ),
-                                        marginTop: 3,
-                                        paddingHorizontal: 5,
-                                      },
-                                    ]}>
-                                    {`${description.descriptions[1].slice(
-                                      0,
-                                      MAX_Height,
-                                    )}`}
-                                  </Text>
+                          <View style={[{paddingHorizontal: 10}]}>
+                            <View>
+                              {description.descriptions[1] && (
+                                <Text
+                                  style={[
+                                    Styles.darkMedium13,
+                                    {
+                                      color: GetColor(color, 1),
+                                      fontFamily: GetFont(font_family, 1),
+                                      backgroundColor: GetBegraund(
+                                        podcherknuti,
+                                        1,
+                                      ),
+                                      marginTop: 3,
+                                      paddingHorizontal: 5,
+                                    },
+                                  ]}>
+                                  {`${description.descriptions[1].slice(
+                                    0,
+                                    MAX_Height,
+                                  )}`}
+                                </Text>
+                              )}
+                              <View
+                                style={{
+                                  marginBottom: 2.5,
+                                  paddingHorizontal: 5,
+                                }}>
+                                {description.descriptions[1].length >
+                                  MAX_Height && (
+                                  <TouchableOpacity
+                                    onPress={() => {
+                                      setActive(1);
+                                      startAnimation(true);
+                                    }}>
+                                    <Text
+                                      style={[
+                                        Styles.balihaiMedium13,
+                                        {color: 'white'},
+                                      ]}>
+                                      Показать больше
+                                    </Text>
+                                  </TouchableOpacity>
                                 )}
-                                <View
-                                  style={{
-                                    marginBottom: 3,
-                                    paddingHorizontal: 5,
-                                  }}>
-                                  {description.descriptions[1].length >
-                                    MAX_Height && (
-                                    <TouchableOpacity
-                                      onPress={() => {
-                                        setActive(1);
-                                        startAnimation(true);
-                                      }}>
-                                      <Text
-                                        style={[
-                                          Styles.balihaiMedium13,
-                                          {color: 'white'},
-                                        ]}>
-                                        Показать больше
-                                      </Text>
-                                    </TouchableOpacity>
-                                  )}
-                                </View>
                               </View>
                             </View>
-                          }
+                          </View>
                         </View>
                       )}
                       <FastImage
                         source={{
                           uri: `https://chambaonline.pro/uploads/${photos[1].photo}`,
                         }}
-                        style={[
-                          styles.gridPhoto,
-                          {height: 277.5, borderBottomLeftRadius: 10},
-                        ]}
+                        style={[styles.gridPhoto, {height: 278.5}]}
                       />
                     </TouchableOpacity>
                     <TouchableOpacity
-                      style={[styles.gridPhotoContainer, {height: 277.5}]}
+                      style={[styles.gridPhotoContainer, {height: 278}]}
                       onPress={() => {
                         setActive(2);
                         setVisable(true);
@@ -805,7 +801,7 @@ export const Posts = ({
                             position: 'absolute',
                             top: 0,
                             backgroundColor: GetCveta(cveta, 2),
-                            borderRadius: 5,
+
                             marginHorizontal: 5,
                             zIndex: 999,
                           }}>
@@ -864,10 +860,7 @@ export const Posts = ({
                         source={{
                           uri: `https://chambaonline.pro/uploads/${photos[2].photo}`,
                         }}
-                        style={[
-                          styles.gridPhoto,
-                          {height: 277.4, borderTopLeftRadius: 10},
-                        ]}
+                        style={[styles.gridPhoto, {height: 279}]}
                       />
                     </TouchableOpacity>
                   </View>
@@ -876,7 +869,7 @@ export const Posts = ({
             ) : (
               // Стандартный макет 2x2 для 4+ фото
               <>
-                <View style={[styles.gridRow, {gap: 5, marginBottom: 5}]}>
+                <View style={[styles.gridRow, {gap: 2.5, marginBottom: 2.5}]}>
                   <TouchableOpacity
                     style={styles.gridPhotoContainer}
                     onPress={() => {
@@ -890,63 +883,61 @@ export const Posts = ({
                           position: 'absolute',
                           top: 45,
                           backgroundColor: GetCveta(cveta, 0),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
-                        {
-                          <View style={[{paddingHorizontal: 10}]}>
-                            <View>
-                              {description.descriptions[0] && (
-                                <Text
-                                  style={[
-                                    Styles.darkMedium13,
-                                    {
-                                      color: GetColor(color, 0),
-                                      fontFamily: GetFont(font_family, 0),
-                                      backgroundColor: GetBegraund(
-                                        podcherknuti,
-                                        0,
-                                      ),
-                                      marginTop: 3,
-                                      paddingHorizontal: 5,
-                                    },
-                                  ]}>
-                                  {`${description.descriptions[0].slice(
-                                    0,
-                                    MAX_Height,
-                                  )}`}
-                                </Text>
+                        <View style={[{paddingHorizontal: 10}]}>
+                          <View>
+                            {description.descriptions[0] && (
+                              <Text
+                                style={[
+                                  Styles.darkMedium13,
+                                  {
+                                    color: GetColor(color, 0),
+                                    fontFamily: GetFont(font_family, 0),
+                                    backgroundColor: GetBegraund(
+                                      podcherknuti,
+                                      0,
+                                    ),
+                                    marginTop: 3,
+                                    paddingHorizontal: 5,
+                                  },
+                                ]}>
+                                {`${description.descriptions[0].slice(
+                                  0,
+                                  MAX_Height,
+                                )}`}
+                              </Text>
+                            )}
+                            <View
+                              style={{marginBottom: 3, paddingHorizontal: 5}}>
+                              {description.descriptions[0].length >
+                                MAX_Height && (
+                                <TouchableOpacity
+                                  onPress={() => {
+                                    setActive(0);
+                                    startAnimation(true);
+                                  }}>
+                                  <Text
+                                    style={[
+                                      Styles.balihaiMedium13,
+                                      {color: 'white'},
+                                    ]}>
+                                    Показать больше
+                                  </Text>
+                                </TouchableOpacity>
                               )}
-                              <View
-                                style={{marginBottom: 3, paddingHorizontal: 5}}>
-                                {description.descriptions[0].length >
-                                  MAX_Height && (
-                                  <TouchableOpacity
-                                    onPress={() => {
-                                      setActive(0);
-                                      startAnimation(true);
-                                    }}>
-                                    <Text
-                                      style={[
-                                        Styles.balihaiMedium13,
-                                        {color: 'white'},
-                                      ]}>
-                                      Показать больше
-                                    </Text>
-                                  </TouchableOpacity>
-                                )}
-                              </View>
                             </View>
                           </View>
-                        }
+                        </View>
                       </View>
                     )}
                     <FastImage
                       source={{
                         uri: `https://chambaonline.pro/uploads/${photos[0].photo}`,
                       }}
-                      style={[styles.gridPhoto, {borderBottomRightRadius: 10}]}
+                      style={[styles.gridPhoto]}
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -962,7 +953,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 45,
                           backgroundColor: GetCveta(cveta, 1),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -1018,11 +1009,11 @@ export const Posts = ({
                       source={{
                         uri: `https://chambaonline.pro/uploads/${photos[1]?.photo}`,
                       }}
-                      style={[styles.gridPhoto, {borderBottomLeftRadius: 10}]}
+                      style={[styles.gridPhoto]}
                     />
                   </TouchableOpacity>
                 </View>
-                <View style={[styles.gridRow, {gap: 5}]}>
+                <View style={[styles.gridRow, {gap: 2.5}]}>
                   <TouchableOpacity
                     style={styles.gridPhotoContainer}
                     onPress={() => {
@@ -1036,7 +1027,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 0,
                           backgroundColor: GetCveta(cveta, 2),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -1092,7 +1083,7 @@ export const Posts = ({
                       source={{
                         uri: `https://chambaonline.pro/uploads/${photos[2]?.photo}`,
                       }}
-                      style={[styles.gridPhoto, {borderTopRightRadius: 10}]}
+                      style={[styles.gridPhoto]}
                     />
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -1108,7 +1099,7 @@ export const Posts = ({
                           position: 'absolute',
                           top: 0,
                           backgroundColor: GetCveta(cveta, 3),
-                          borderRadius: 5,
+
                           marginHorizontal: 5,
                           zIndex: 999,
                         }}>
@@ -1164,7 +1155,7 @@ export const Posts = ({
                       source={{
                         uri: `https://chambaonline.pro/uploads/${photos[3]?.photo}`,
                       }}
-                      style={[styles.gridPhoto, {borderTopLeftRadius: 10}]}
+                      style={[styles.gridPhoto, {height: 279.8}]}
                     />
                   </TouchableOpacity>
                 </View>
@@ -1341,35 +1332,6 @@ export const Posts = ({
           </View>
           {photos.map((elm, i) => {
             const getBorderStyle = () => {
-              if (photos.length === 2) {
-                if (i === 0) {
-                  return {
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                  };
-                }
-                if (i === 1) {
-                  return {borderTopLeftRadius: 10, borderTopRightRadius: 10};
-                }
-              } else if (photos.length === 3) {
-                if (i === 0) {
-                  return {
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                  };
-                }
-                if (i === 1) {
-                  return {
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  };
-                }
-                if (i === 2) {
-                  return {borderTopLeftRadius: 10, borderTopRightRadius: 10};
-                }
-              }
               return {};
             };
 
@@ -1393,7 +1355,7 @@ export const Posts = ({
                         position: 'absolute',
                         top: i === 0 ? 45 : 0,
                         backgroundColor: GetCveta(cveta, i),
-                        borderRadius: 5,
+
                         marginHorizontal: 5,
                         zIndex: 999,
                       }}>
@@ -1804,7 +1766,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 5,
+    gap: 2.5,
   },
   gridPhotoContainer: {
     flex: 1,

@@ -114,7 +114,7 @@ export const HomeScreen = () => {
   }, [createPost.loading]);
 
   const fetchUserInfo = async () => {
-    if (staticdata.token)
+    if (staticdata.token) {
       try {
         const response = await axios.get(`${Api}/auth_user_info`, {
           headers: {
@@ -125,6 +125,7 @@ export const HomeScreen = () => {
       } catch (error) {
         console.error('Error fetching user info:', error);
       }
+    }
   };
 
   useEffect(() => {
@@ -290,7 +291,7 @@ export const HomeScreen = () => {
       },
     [blackList, getLents.data.length, viewableItems, fullScreen],
   );
-  const keyExtractor = React.useCallback((item) => item?.id?.toString(), []);
+  const keyExtractor = React.useCallback(item => item?.id?.toString(), []);
 
   const refreshControl = (
     <RefreshControl
