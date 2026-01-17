@@ -75,151 +75,153 @@ const CustomTabBar = ({state, descriptors, navigation}) => {
   if (!isKeyboardVisible) {
     if (currentRouteName != 'AddImg' && show && !fullScreen) {
       return (
-        <View
-          style={[
-            styles.tabWrapper,
-            {
-              bottom:
-                bottom < 25
-                  ? Math.max(bottom, 10) - 3
-                  : Math.max(bottom, 10) + 5,
-            },
-          ]}>
-          <BootomModal ref={bottomSheetRef} snapPoints={snapPoints}>
-            <View>
-              <Text
-                style={[
-                  Styles.darkSemiBold16,
-                  {
-                    borderBottomWidth: 1,
-                    marginHorizontal: 10,
-                    paddingBottom: 10,
-                    borderColor: '#ededed',
-                  },
-                ]}>
-                Опубликовать
-              </Text>
-            </View>
-            <View style={{marginTop: 20, gap: 15, paddingHorizontal: 10}}>
-              <View
-                style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
-                <AddPhotoSvg />
-                <TouchableOpacity
-                  accessibilityLabel="AddPhoto"
-                  style={{width: '100%'}}>
-                  <Text
-                    onPress={() => {
-                      bottomSheetRef.current?.close();
-                      navigation.navigate('AddPhoto');
-                    }}
-                    style={[Styles.darkMedium16, {paddingBottom: 4}]}>
-                    {t(mainData.lang).Addphoto}
-                    {/* <Text style={{ fontSize: 10 }}>  (не более 1-й минуты)</Text> */}
-                  </Text>
-                </TouchableOpacity>
+        <SafeAreaView style={[styles.tabWrapperContainer]}>
+          <View
+            style={[
+              styles.tabWrapper,
+              {
+                bottom:
+                  bottom < 25
+                    ? Math.max(bottom, 10) - 3
+                    : Math.max(bottom, 10) + 5,
+              },
+            ]}>
+            <BootomModal ref={bottomSheetRef} snapPoints={snapPoints}>
+              <View>
+                <Text
+                  style={[
+                    Styles.darkSemiBold16,
+                    {
+                      borderBottomWidth: 1,
+                      marginHorizontal: 10,
+                      paddingBottom: 10,
+                      borderColor: '#ededed',
+                    },
+                  ]}>
+                  Опубликовать
+                </Text>
               </View>
-              <View
-                style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
-                <NoteSvg />
-                <TouchableOpacity style={{width: '100%'}}>
-                  <Text
-                    onPress={() => {
-                      bottomSheetRef.current?.close();
-                      navigation.navigate('AddText');
-                    }}
-                    style={[Styles.darkMedium16, {paddingBottom: 4}]}>
-                    {t(mainData.lang).Addtext}
-                  </Text>
-                </TouchableOpacity>
+              <View style={{marginTop: 20, gap: 15, paddingHorizontal: 10}}>
+                <View
+                  style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                  <AddPhotoSvg />
+                  <TouchableOpacity
+                    accessibilityLabel="AddPhoto"
+                    style={{width: '100%'}}>
+                    <Text
+                      onPress={() => {
+                        bottomSheetRef.current?.close();
+                        navigation.navigate('AddPhoto');
+                      }}
+                      style={[Styles.darkMedium16, {paddingBottom: 4}]}>
+                      {t(mainData.lang).Addphoto}
+                      {/* <Text style={{ fontSize: 10 }}>  (не более 1-й минуты)</Text> */}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                  <NoteSvg />
+                  <TouchableOpacity style={{width: '100%'}}>
+                    <Text
+                      onPress={() => {
+                        bottomSheetRef.current?.close();
+                        navigation.navigate('AddText');
+                      }}
+                      style={[Styles.darkMedium16, {paddingBottom: 4}]}>
+                      {t(mainData.lang).Addtext}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          </BootomModal>
-          {state.routes.map((route, index) => {
-            const {options} = descriptors[route.key];
-            const label =
-              options.tabBarLabel !== undefined
-                ? options.tabBarLabel
-                : options.title !== undefined
-                ? options.title
-                : route.name;
+            </BootomModal>
+            {state.routes.map((route, index) => {
+              const {options} = descriptors[route.key];
+              const label =
+                options.tabBarLabel !== undefined
+                  ? options.tabBarLabel
+                  : options.title !== undefined
+                  ? options.title
+                  : route.name;
 
-            const isFocused = state.index === index;
+              const isFocused = state.index === index;
 
-            let tabIcon = null;
+              let tabIcon = null;
 
-            if (label === 'Home') {
-              tabIcon = <HomeSvg focused={isFocused} />;
-            } else if (label === 'SearchNavigation') {
-              tabIcon = <SearchSvg focused={isFocused} />;
-            } else if (label === 'AddImg') {
-              tabIcon = (
-                <View>
-                  <AddSvg focused={isFocused} />
-                </View>
-              );
-            } else if (label === 'ChatNavigation') {
-              tabIcon = (
-                <View>
-                  {user.msgCount > 0 && (
-                    <View style={styles.message}>
-                      <Text
-                        style={{
-                          color: '#FFF',
-                          fontSize: 10,
-                          fontWeight: '600',
-                        }}>
-                        {user.msgCount}
-                      </Text>
-                    </View>
-                  )}
-                  <ChatSvg focused={isFocused} />
-                </View>
-              );
-            } else if (label === 'ProfileNavigation') {
-              tabIcon = <UserSvg focused={isFocused} />;
-            }
-
-            const onPress = () => {
-              const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              });
-              if (!event.defaultPrevented) {
-                if (route.name == 'ProfileNavigation') {
-                  navigation.navigate(route.name, {
-                    screen: 'ProfileScreen',
-                  });
-                } else if (route.name == 'AddImg') {
-                  AddPostShow();
-                } else {
-                  navigation.navigate(route.name);
-                }
+              if (label === 'Home') {
+                tabIcon = <HomeSvg focused={isFocused} />;
+              } else if (label === 'SearchNavigation') {
+                tabIcon = <SearchSvg focused={isFocused} />;
+              } else if (label === 'AddImg') {
+                tabIcon = (
+                  <View>
+                    <AddSvg focused={isFocused} />
+                  </View>
+                );
+              } else if (label === 'ChatNavigation') {
+                tabIcon = (
+                  <View>
+                    {user.msgCount > 0 && (
+                      <View style={styles.message}>
+                        <Text
+                          style={{
+                            color: '#FFF',
+                            fontSize: 10,
+                            fontWeight: '600',
+                          }}>
+                          {user.msgCount}
+                        </Text>
+                      </View>
+                    )}
+                    <ChatSvg focused={isFocused} />
+                  </View>
+                );
+              } else if (label === 'ProfileNavigation') {
+                tabIcon = <UserSvg focused={isFocused} />;
               }
-            };
 
-            const onLongPress = () => {
-              navigation.emit({
-                type: 'tabLongPress',
-                target: route.key,
-              });
-            };
+              const onPress = () => {
+                const event = navigation.emit({
+                  type: 'tabPress',
+                  target: route.key,
+                  canPreventDefault: true,
+                });
+                if (!event.defaultPrevented) {
+                  if (route.name == 'ProfileNavigation') {
+                    navigation.navigate(route.name, {
+                      screen: 'ProfileScreen',
+                    });
+                  } else if (route.name == 'AddImg') {
+                    AddPostShow();
+                  } else {
+                    navigation.navigate(route.name);
+                  }
+                }
+              };
 
-            return (
-              <TouchableOpacity
-                key={index}
-                accessibilityRole="button"
-                accessibilityLabel={route.name}
-                style={{width: '20%'}}
-                accessibilityState={isFocused ? {selected: true} : {}}
-                testID={options.tabBarTestID}
-                onPress={onPress}
-                onLongPress={onLongPress}>
-                <View style={styles.tabBar}>{tabIcon}</View>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+              const onLongPress = () => {
+                navigation.emit({
+                  type: 'tabLongPress',
+                  target: route.key,
+                });
+              };
+
+              return (
+                <TouchableOpacity
+                  key={index}
+                  accessibilityRole="button"
+                  accessibilityLabel={route.name}
+                  style={{width: '20%'}}
+                  accessibilityState={isFocused ? {selected: true} : {}}
+                  testID={options.tabBarTestID}
+                  onPress={onPress}
+                  onLongPress={onLongPress}>
+                  <View style={styles.tabBar}>{tabIcon}</View>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        </SafeAreaView>
       );
     }
   }
@@ -322,13 +324,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     zIndex: 99999,
   },
+  tabWrapperContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingBottom: 0,
+  },
   tabWrapper: {
     flexDirection: 'row',
-    position: 'absolute',
     width: '80%',
-    left: '10%',
-    right: 0,
-    zIndex: 1,
+    alignSelf: 'center',
     paddingVertical: 5,
     backgroundColor: 'white',
     borderRadius: 15,

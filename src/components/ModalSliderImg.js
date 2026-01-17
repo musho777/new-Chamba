@@ -198,7 +198,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    borderRadius: 10,
   },
   paginationWrapper: {
     flexDirection: 'row',
