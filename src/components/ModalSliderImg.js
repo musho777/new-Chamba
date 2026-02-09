@@ -20,7 +20,15 @@ import {CloseSvg} from '../assets/svg/Svgs';
 const windowWidth = Dimensions.get('window').width;
 
 export const ModalSliderImg = ({photo, activePhoto, close, avatar}) => {
-  const [active, setActive] = useState(activePhoto || 0);
+  // Safety check: ensure photo is a valid array
+  if (!photo || !Array.isArray(photo) || photo.length === 0) {
+    return null;
+  }
+
+  // Ensure activePhoto is within bounds
+  const safeActivePhoto = activePhoto >= 0 && activePhoto < photo.length ? activePhoto : 0;
+
+  const [active, setActive] = useState(safeActivePhoto);
   const [imageHeights, setImageHeights] = useState({});
   const PAGE_WIDTH = windowWidth;
   const PAGE_HEIGHT = 600;

@@ -27,8 +27,8 @@ export const Album = ({id, data, seved, my = false, elm, lastItem, index}) => {
         color={elm?.color}
         text={elm?.description && JSON.parse(elm.description)}
         fontFamily={elm?.font_family}
-        video={elm?.photo ? elm.photo[0]?.video : elm.post.photo[0]?.video}
-        photo={elm?.photo ? elm?.photo[0]?.photo : elm?.post.photo[0]?.photo}
+        video={elm?.photo && elm.photo.length > 0 ? elm.photo[0]?.video : elm?.post?.photo && elm.post.photo.length > 0 ? elm.post.photo[0]?.video : undefined}
+        photo={elm?.photo && elm.photo.length > 0 ? elm?.photo[0]?.photo : elm?.post?.photo && elm.post.photo.length > 0 ? elm?.post.photo[0]?.photo : undefined}
       />
       {data.length === 0 && <Empty seved={seved} />}
     </View>

@@ -169,7 +169,7 @@ export const ProfilImage = ({user, changeAvatar, setChangeAvatar}) => {
   };
 
   const renderItem1 = ({item, index}) => {
-    if (item?.photo_array[0]?.photo) {
+    if (item?.photo_array && item.photo_array.length > 0 && item.photo_array[0]?.photo) {
       return (
         <TouchableOpacity
           accessibilityLabel="Photo1"
