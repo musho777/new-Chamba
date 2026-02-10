@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {
   TouchableOpacity,
   ActivityIndicator,
@@ -29,6 +29,7 @@ export const ProfileScreen = () => {
   const [page, setPage] = useState(1);
   const [seletedScreen, setSelectedScreen] = useState(true);
   const [changeAvatar, setChangeAvatar] = useState(false);
+  const isLoadingMore = useRef(false);
 
   useEffect(() => {
     if (user.data?.id) {
@@ -36,9 +37,20 @@ export const ProfileScreen = () => {
     }
   }, [user.data?.id]);
 
+  useEffect(() => {
+    if (!getPosts.secondLoading) {
+      isLoadingMore.current = false;
+    }
+  }, [getPosts.secondLoading]);
+
   const handleEndReached = useCallback(() => {
     if (seletedScreen) {
-      if (getPosts.nextPage && !getPosts.secondLoading) {
+      if (
+        getPosts.nextPage &&
+        !getPosts.secondLoading &&
+        !isLoadingMore.current
+      ) {
+        isLoadingMore.current = true;
         let pages = page + 1;
         dispatch(
           GetPostsAction({user_id: user.data.id}, staticdata.token, pages),
@@ -52,7 +64,7 @@ export const ProfileScreen = () => {
     if (item?.id) {
       return (
         <Album
-          id={item.id}
+          id={item?.id}
           index={index}
           lastItem={index == getPosts.data.length - 1 && !getPosts.nextPage}
           elm={item}
@@ -100,7 +112,7 @@ export const ProfileScreen = () => {
         />
         <FlatList
           data={seletedScreen ? getPosts?.data : [{id: 1}]}
-          keyExtractor={item => item?.id?.toString()}
+          keyExtractor={(item, index) => `${item?.id}-${index}`}
           showsVerticalScrollIndicator={false}
           refreshing={user?.loading}
           contentContainerStyle={{paddingHorizontal: 15}}

@@ -21,7 +21,11 @@ const SearchReducer = (state = initialState, action) => {
       item.message = action.data?.message
       item.loading = false;
 
-      item.data = [...item.data, ...action.data.data.data];
+      // Filter out duplicates before adding
+      const newItems = action.data.data.data.filter(
+        newItem => !item.data.some(existingItem => existingItem.id === newItem.id)
+      );
+      item.data = [...item.data, ...newItems];
       item.nextPage = action.data.data.next_page_url
       break;
     case 'ErrorSearch':

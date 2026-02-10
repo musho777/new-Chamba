@@ -52,6 +52,7 @@ export const SearchProfil = ({navigation, route}) => {
   const [postLoading, setPostLoading] = useState(true);
   const [postSecondLoading, setPostSecondLoadin] = useState(false);
   const [postData, setPostData] = useState([]);
+  const isLoadingMore = useRef(false);
 
   function canParseJSON(jsonString) {
     try {
@@ -107,6 +108,7 @@ export const SearchProfil = ({navigation, route}) => {
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', `Bearer ${staticdata.token}`);
     try {
+      console.log(page);
       const response = await fetch(
         `${Api}/get_all_post_auth_user_or_other_user?page=${page}`,
         {
@@ -119,18 +121,24 @@ export const SearchProfil = ({navigation, route}) => {
       setPostLoading(false);
       setPostSecondLoadin(false);
       setPost(result.data);
-      let current = [...item, ...result.data.data];
       if (page == 1) {
         setPostData(result.data.data);
       } else {
-        setPostData(current);
+        // Filter out duplicates before adding
+        const newItems = result.data.data.filter(
+          newItem => !item.some(existingItem => existingItem.id === newItem.id)
+        );
+        setPostData([...item, ...newItems]);
       }
+      isLoadingMore.current = false;
     } catch (error) {
       setPostSecondLoadin(false);
       setPostLoading(false);
+      isLoadingMore.current = false;
     } finally {
       setPostSecondLoadin(false);
       setPostLoading(false);
+      isLoadingMore.current = false;
     }
   };
 
@@ -171,7 +179,8 @@ export const SearchProfil = ({navigation, route}) => {
 
   const handleEndReached = () => {
     if (seletedScreen) {
-      if (post?.next_page_url && !postSecondLoading) {
+      if (post?.next_page_url && !postSecondLoading && !isLoadingMore.current) {
+        isLoadingMore.current = true;
         let pages = page + 1;
         setPage(pages);
         fetchPost(pages);
@@ -182,7 +191,7 @@ export const SearchProfil = ({navigation, route}) => {
   const renderItem1 = ({item, index}) => {
     return (
       <Album
-        id={item.id}
+        id={item?.id}
         index={index}
         elm={item}
         loading={postLoading}
@@ -223,7 +232,7 @@ export const SearchProfil = ({navigation, route}) => {
     <SafeAreaView style={{flex: 1}}>
       <FlatList
         data={seletedScreen ? postData : [{id: 1}]}
-        keyExtractor={item => item?.id?.toString()}
+        keyExtractor={(item, index) => `${item?.id}-${index}`}
         showsVerticalScrollIndicator={false}
         refreshing={postLoading}
         contentContainerStyle={{paddingHorizontal: 15}}

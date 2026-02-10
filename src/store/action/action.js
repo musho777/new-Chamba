@@ -478,12 +478,13 @@ export const ChangeEmailAction = (data, token) => {
         if (r.status) {
           dispatch(SuccessChangeEmail(r.data));
         } else {
-          if (r.message.email)
+          if (r.message.email) {
             dispatch(
               ErrorChangeEmail({
                 email: 'указанный адрес электронной почты, уже существует.',
               }),
             );
+          }
         }
       })
       .catch(error => {
@@ -876,6 +877,7 @@ export const CreatePostLocal = form => {
 
 export const GetPostsAction = (data, token, page) => {
   var myHeaders = new Headers();
+  console.log(page);
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', `Bearer ${token}`);
   return dispatch => {
