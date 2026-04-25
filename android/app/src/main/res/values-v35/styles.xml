@@ -1,16 +1,22 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Android 15+ specific theme to handle edge-to-edge compatibility -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
-        <!-- Disable edge-to-edge enforcement to support legacy libraries -->
+
+        <!-- Android 15 Edge-to-Edge Compatibility -->
+        <!-- Disable strict edge-to-edge enforcement for legacy library compatibility -->
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowLightStatusBar">true</item>
-        <!-- Opt-out of edge-to-edge for Android 15 compatibility -->
+
+        <!-- Opt-out of automatic edge-to-edge insets -->
         <item name="android:enforceNavigationBarContrast">false</item>
         <item name="android:enforceStatusBarContrast">false</item>
+
+        <!-- Allow legacy status/navigation bar APIs to work -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
 
 </resources>

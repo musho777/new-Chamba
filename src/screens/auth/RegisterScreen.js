@@ -234,6 +234,13 @@ export const RegisterScreen = ({navigation, route}) => {
             title={t(mainData.lang).Confirm}
           />
         )}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('CommunityStandards')}
+          style={{ marginTop: 10, marginBottom: 20, alignItems: 'center' }}>
+          <Text style={[Styles.darkSemiBold12, { textDecorationLine: 'underline' }]}>
+            {t(mainData.lang).CommunityStandards}
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

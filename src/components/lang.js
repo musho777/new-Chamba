@@ -100,7 +100,9 @@ export const t = (lang = 'ru') => {
             Doyoureallywanttoexit: "Do you really want to exit?",
             Nosoundsavailable: "No sounds available",
             Addtext: "Note",
-            ChangeBackgroundStyle: "Change Background Style"
+            ChangeBackgroundStyle: "Change Background Style",
+            CommunityStandards: "Community Standards",
+            SafetyPolicy: "Safety Policy"
         }
     }
     {
@@ -204,7 +206,9 @@ export const t = (lang = 'ru') => {
             Doyoureallywanttoexit: "Вы действительно хотите выйти?",
             Nosoundsavailable: "Нет доступных звуков",
             Addtext: "Запись",
-            ChangeBackgroundStyle: "Изменить стиль фона"
+            ChangeBackgroundStyle: "Изменить стиль фона",
+            CommunityStandards: "Стандарты сообщества",
+            SafetyPolicy: "Политика безопасности"
         }
     }
 }

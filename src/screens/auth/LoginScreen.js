@@ -130,6 +130,13 @@ export const LoginScreen = ({ navigation }) => {
         title={t(mainData.lang).Login}
         loading={loginData.loading}
       />
+      <TouchableOpacity
+        onPress={() => navigation.navigate('CommunityStandards')}
+        style={{ marginTop: 20, alignItems: 'center' }}>
+        <Text style={[Styles.darkSemiBold12, { textDecorationLine: 'underline' }]}>
+          {t(mainData.lang).CommunityStandards}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

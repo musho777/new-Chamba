@@ -56,6 +56,10 @@ export const Settings = () => {
         onPress={() => navigation.navigate('Soundsandnotifications')}
         text={t(mainData.lang).Soundsandnotifications}
       />
+      <FieldWithArrow
+        onPress={() => navigation.navigate('CommunityStandards')}
+        text={t(mainData.lang).CommunityStandards}
+      />
       {/* <View style={styles.delate}>
       <TouchableOpacity disabled={loading} onPress={() => setShow(true)} style={styles.button}>
         <Text style={styles.delateText}>Удалить аккаунт</Text>

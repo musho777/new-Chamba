@@ -79,13 +79,22 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.chamba"
+    namespace "com.photohost"
     defaultConfig {
-        applicationId "com.chamba"
+        applicationId "com.photohost"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 75
+        versionName "75.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = false
+        }
     }
     signingConfigs {
         debug {
@@ -95,10 +104,10 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file('chamba-release-key.keystore')
-            storePassword 'chamba123'
-            keyAlias 'chamba-key-alias'
-            keyPassword 'chamba123'
+            storeFile file('photoHost.keystore')
+            storePassword '11111111'
+            keyAlias 'photohost'
+            keyPassword '11111111'
         }
     }
     buildTypes {
@@ -116,6 +125,9 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

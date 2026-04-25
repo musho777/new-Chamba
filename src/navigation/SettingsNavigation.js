@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { Soundsandnotifications } from '../screens/Settings/Soundsandnotifications';
 import { LikeNotification } from '../screens/Settings/LikeNotification';
 import { ChangeBegraundStyle } from '../screens/Settings/ChangeBegraundStyle';
+import { CommunityStandards } from '../screens/Settings/CommunityStandards';
 
 export const SettingsNavigation = () => {
   const Stack = createStackNavigator();
@@ -48,6 +49,16 @@ export const SettingsNavigation = () => {
         options={{
           header: ({ navigation }) => (
             <HeaderWhiteTitle title={t(mainData.data).ChangeBackgroundStyle} onPress={() => navigation.goBack()} />
+          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="CommunityStandards"
+        component={CommunityStandards}
+        options={{
+          header: ({ navigation }) => (
+            <HeaderWhiteTitle title={t(mainData.data).CommunityStandards} onPress={() => navigation.goBack()} />
           ),
         }}
       />

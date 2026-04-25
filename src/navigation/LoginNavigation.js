@@ -6,6 +6,8 @@ import { NewPassword } from '../screens/auth/NewPassword';
 import { Header } from '../headers/Header';
 import { Catalog } from '../screens/catalog';
 import { RegisterType } from '../screens/auth/registerType';
+import { CommunityStandards } from '../screens/Settings/CommunityStandards';
+import { HeaderWhiteTitle } from '../headers/HeaderWhiteTitle.';
 
 export const LoginNavigation = () => {
   const Stack = createStackNavigator();
@@ -56,6 +58,15 @@ export const LoginNavigation = () => {
         component={RegisterType}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="CommunityStandards"
+        component={CommunityStandards}
+        options={{
+          header: ({ navigation }) => (
+            <HeaderWhiteTitle title="Community Standards" onPress={() => navigation.goBack()} />
+          ),
         }}
       />
 
